@@ -6,7 +6,7 @@ https://img.shields.io/badge/Pygame-2.0%252B-green
 
 https://img.shields.io/badge/Threading-Synchronized-orange
 
-Un juego submarino desarrollado en Python que demuestra el uso avanzado de hilos, mutex, semáforos y secciones críticas para la sincronización de procesos concurrentes.
+Un juego submarino desarrollado en Python que demuestra el uso avanzado de hilos, mutex, semáforos y secciones críticas para la sincronización de procesos concurrentes.}
 
 ------------
 
@@ -75,8 +75,6 @@ Función: Protege el acceso concurrente a la lista compartida de obstáculos dur
 
 #### 2. Variables de Condición (Condition) - Semáforos Controlados
 
-
-
     condicion = threading.Condition(mutex)
     
     with condicion:
@@ -91,8 +89,6 @@ Función: Protege el acceso concurrente a la lista compartida de obstáculos dur
 Función: Actúa como semáforo que permite la comunicación entre hilos. El hilo consumidor espera hasta que el productor genere nuevos obstáculos.
 
 #### 3. Secciones Críticas
-
-
 
     def mover_obstaculos():
         while juego_activo:
@@ -126,3 +122,64 @@ Función: Garantiza que las operaciones sobre datos compartidos (lista de obstá
 - Fácil: 5 vidas, obstáculos lentos
 - Medio: 4 vidas, velocidad normal
 - Difícil: 3 vidas, obstáculos rápidos
+
+------------
+
+## 📁 Estructura del Proyecto
+
+aventura_submarina/
+│
+├── juego_submarino.py          
+├── fondo_marino.png           
+├── submarino.png             
+├── medusa.png                 
+├── tiburon.png                
+└── README.md                  
+
+------------
+
+## 🚀 Instalación y Ejecución
+
+### 1. Clona el repositorio:
+
+    git clone https://github.com/tuusuario/aventura-submarina.git
+    cd aventura-submarina
+
+### 2. Instala las dependencias:
+
+    pip install pygame
+
+### 3. Ejecuta el juego:
+
+    python juego_submarino.py
+
+------------
+
+## 🔧 Arquitectura de Hilos
+
+### Hilo Principal
+
+- Bucle de juego (60 FPS)
+- Manejo de eventos y entrada de usuario
+- Renderizado de gráficos
+
+### Hilo Secundario 1 - Generador de Obstáculos
+
+- Generación periódica de medusas y tiburones
+- Control de frecuencia según dificultad y nivel
+- Señalización al hilo consumidor
+
+### Hilo Secundario 2 - Movedor de Obstáculos
+
+- Movimiento continuo de obstáculos hacia abajo
+- Detección de colisiones con el jugador
+- Gestión de puntos y niveles
+
+## 💡 Aprendizajes de Sincronización
+
+Este proyecto demuestra patrones esenciales de programación concurrente:
+
+1. Productor-Consumidor: Un hilo genera obstáculos, otro los procesa
+2. Exclusión mutua: Protección de recursos compartidos con mutex
+3. Coordinación entre hilos: Uso de variables de condición para señalización
+4. Secciones críticas: Operaciones atómicas sobre datos compartidos
