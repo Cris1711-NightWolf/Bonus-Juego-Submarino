@@ -47,3 +47,13 @@ Pausa el juego con P y reinicia con R
 ![Game Over](https://github.com/Cris1711-NightWolf/Bonus-Juego-Submarino/blob/main/Pantallazos/game_over.png?raw=true)
 
 Reinicia con R, vuelve al menú con M, o sale con ESC
+
+------------
+
+## 🛠️ Tecnologías y Conceptos de Sincronización
+
+### 🔧 Stack Tecnológico
+
+- Python 3.8+ - Lenguaje de programación
+- Pygame - Librería para desarrollo de juegos
+- Threading - Módulo para programación concurrente
