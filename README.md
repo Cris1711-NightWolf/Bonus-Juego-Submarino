@@ -57,3 +57,52 @@ Reinicia con R, vuelve al menú con M, o sale con ESC
 - Python 3.8+ - Lenguaje de programación
 - Pygame - Librería para desarrollo de juegos
 - Threading - Módulo para programación concurrente
+
+------------
+
+## 🔄 Mecanismos de Sincronización Implementados
+
+#### 1. Mutex (Exclusion Mutua)
+
+    mutex = threading.Lock()
+    
+    with mutex:
+        for obstaculo in obstaculos:
+            if obstaculo['tipo'] == 'medusa':
+                screen.blit(img_obstaculo, obstaculo['rect'].topleft)
+
+Función: Protege el acceso concurrente a la lista compartida de obstáculos durante el renderizado, evitando condiciones de carrera.
+
+#### 2. Variables de Condición (Condition) - Semáforos Controlados
+
+
+
+    condicion = threading.Condition(mutex)
+    
+    with condicion:
+        if not pausado and juego_activo and estado_juego == JUGANDO:
+            obstaculos.append({...})
+            condicion.notify()
+    
+    with condicion:
+        while not obstaculos and juego_activo and estado_juego == JUGANDO:
+            condicion.wait()
+
+Función: Actúa como semáforo que permite la comunicación entre hilos. El hilo consumidor espera hasta que el productor genere nuevos obstáculos.
+
+#### 3. Secciones Críticas
+
+
+
+    def mover_obstaculos():
+        while juego_activo:
+            with condicion:
+    
+    for obstaculo in obstaculos[:]:
+                    obstaculo['rect'].move_ip(0, obstaculo['velocidad'])
+    
+    if obstaculo['rect'].colliderect(player):
+                        vidas -= 1
+    obstaculos.remove(obstaculo)
+
+Función: Garantiza que las operaciones sobre datos compartidos (lista de obstáculos, vidas) se ejecuten atómicamente.
