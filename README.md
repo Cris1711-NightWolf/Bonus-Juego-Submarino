@@ -106,3 +106,23 @@ Función: Actúa como semáforo que permite la comunicación entre hilos. El hil
     obstaculos.remove(obstaculo)
 
 Función: Garantiza que las operaciones sobre datos compartidos (lista de obstáculos, vidas) se ejecuten atómicamente.
+
+------------
+
+## 🎮 Cómo Jugar
+
+### ⌨️ Controles
+
+- Flechas: Mover submarino (4 direcciones)
+- P: Pausar/Reanudar juego
+- R: Reiniciar (en pausa) / Volver a jugar (en game over)
+- 1,2,3: Seleccionar dificultad (en menú)
+- ESPACIO: Confirmar e iniciar juego
+- M: Volver al menú principal
+- ESC: Salir del juego
+
+### 🎯 Dificultades
+
+- Fácil: 5 vidas, obstáculos lentos
+- Medio: 4 vidas, velocidad normal
+- Difícil: 3 vidas, obstáculos rápidos
